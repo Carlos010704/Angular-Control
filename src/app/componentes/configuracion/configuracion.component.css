@@ -1,0 +1,52 @@
+.slideThree {
+    width: 60px;
+    height: 26px;
+    background: #333;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+ .slideThree:after {
+      content: 'NO';
+      color: #ffffff;
+      position: absolute;
+      right: 10px;
+      z-index: 0;
+      font: 12px/26px Arial, sans-serif;
+      font-weight: bold;
+      text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+    }
+    .slideThree:before {
+      content: 'SI';
+      color: #fff;
+      position: absolute;
+      left: 10px;
+      z-index: 0;
+      font: 12px/26px Arial, sans-serif;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      width: 29px;
+      height: 20px;
+      cursor: pointer;
+      position: absolute;
+      top: 3px;
+      left: 2px;
+      z-index: 1;
+      background: #ff0000;
+      /* background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%); */
+      border-radius: 50px;
+      transition: all 0.4s ease;
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    }
+
+    input[type=checkbox] {
+      visibility: hidden;
+    }
+    input[type=checkbox]:checked + label {
+        left: 29px;
+        background-color: #00ff2f;
+      }
+     
+  

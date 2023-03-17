@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-2">
+    <div class="container">
+        <a routerLink="/" class="navbar-brand">Control Clientes</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="isLoggedIn" class="nav-item px-2">
+          <a routerLink="/" class="nav-link active">
+            <i class="fa fa-home"></i> Inicio</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="isLoggedIn" class="nave nav-item dropdown mr-3">
+          <a href="#" class="nav-link active dropdown-toggle">
+            <i class="fa fa-user p-1"></i>Bienvenido {{loggedInUser}}
+          </a>
+          
+          <div class="dropdown-menu w-100" id="menu">
+            <a routerLink="/configuracion" class="dropdown-item">
+              <i class="fa fa-cog p-1"></i>Configuración
+            </a>
+          </div>
+        </li>
+
+        <li *ngIf="!isLoggedIn && permisoRegistro" class="nav-item">
+          <a routerLink="/login" class="nav-link" routerLinkActive="router-link-active">
+            <i class="fa fa-user"></i> Login
+          </a>
+        </li>
+
+        <li *ngIf="!isLoggedIn && permisoRegistro" class="nav-item">
+          <a routerLink="/registro" class="nav-link" routerLinkActive="router-link-active">
+            <i class="fa fa-user"></i> Registrarse
+          </a>
+        </li>
+
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a style="cursor: pointer;" (click)="logout()" class="nav-link active">
+            <i class="fa fa-user-times"></i> Salir
+          </a>
+        </li>
+        
+      </ul>      
+    </div>
+  </div>
+</nav>

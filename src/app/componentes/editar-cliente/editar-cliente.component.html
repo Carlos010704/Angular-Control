@@ -1,0 +1,108 @@
+<header id="main-header" class="py-2 bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <h1>
+                    <i class="fa fa-user"></i> Editar Cliente
+                </h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<form #clienteForm="ngForm" (ngSubmit)="guardar(clienteForm)">
+
+    <flash-messages></flash-messages>
+
+    <!-- BOTONES  -->
+    <section id="actions" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a routerLink="/" class="btn btn-light btn-block w-50">
+                        <i class="fa fa-home"></i> Regresar al Inicio
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-success btn-block w-50">
+                        <i class="fa fa-check"></i> Guardar Cliente
+                    </button>
+                </div>           
+
+                <div class="col-md-3">
+                    <swal #deleteSwal title="¿Desea eliminar el registro?" icon="question" [showCancelButton]="true" 
+                        confirmButtonText="Aceptar" (confirm)="eliminar()" confirmButtonColor="#198754" cancelButtonColor="#dc3545" >
+                    </swal>
+
+                    <a href="#" class="btn btn-danger btn-block w-50"
+                        [swal]="deleteSwal">
+                        <i class="fa fa-trash"></i> Eliminar Cliente
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="details">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Editar Cliente</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group py-2">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" name="nombre" class="form-control" #nombre="ngModel"
+                                    [(ngModel)]="cliente.nombre"
+                                    [ngClass]="{'is-invalid': nombre.errors && nombre.touched}" required minlength="2">
+
+                                <div class="invalid-feedback" [hidden]="!nombre.hasError('required')">Nombre Requerido
+                                </div>
+                                <div class="invalid-feedback" [hidden]="!nombre.hasError('minlength')">EL nombre debe
+                                    tener almenos 2
+                                    caracteres</div>
+                            </div>
+                            <div class="form-group py-2">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" name="apellido" class="form-control" #apellido="ngModel"
+                                    [(ngModel)]="cliente.apellido"
+                                    [ngClass]="{'is-invalid': apellido.errors && apellido.touched}" required
+                                    minlength="2">
+
+                                <div class="invalid-feedback" [hidden]="!apellido.hasError('required')">Apellido
+                                    Requerido</div>
+                                <div class="invalid-feedback" [hidden]="!apellido.hasError('minlength')">EL apellido
+                                    debe tener almenos 2
+                                    caracteres</div>
+                            </div>
+                            <div class="form-group py-2">
+                                <label for="email">Correo</label>
+                                <input type="email" name="email" class="form-control" #email="ngModel"
+                                    [(ngModel)]="cliente.email"
+                                    [ngClass]="{'is-invalid': email.errors && email.touched}" required minlength="2"
+                                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+                                <div class="invalid-feedback" [hidden]="!email.hasError('required')">Correo Requerido
+                                </div>
+                                <div class="invalid-feedback" [hidden]="!email.hasError('pattern')">El correo no es
+                                    valido</div>
+                            </div>
+                            <div class="form-group py-2">
+                                <label for="saldo">Saldo</label>
+                                <input type="number" name="saldo" class="form-control" #saldo="ngModel"
+                                    [(ngModel)]="cliente.saldo"
+                                    [ngClass]="{'is-invalid': saldo.errors && saldo.touched}" required minlength="2">
+
+                                <div class="invalid-feedback" [hidden]="!saldo.hasError('required')">Saldo Requerido
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
